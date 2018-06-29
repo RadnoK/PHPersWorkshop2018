@@ -31,3 +31,6 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    Sylius\Bundle\AdminApiBundle\Command\CreateClientCommand:
+        class: AppBundle\Command\CreateClientCommand
