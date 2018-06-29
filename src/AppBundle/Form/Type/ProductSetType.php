@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AppBundle\Form\Type;
 
+use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\EventSubscriber\AddCodeFormSubscriber;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -16,6 +17,9 @@ final class ProductSetType extends AbstractResourceType
         $builder
             ->add('name', TextType::class)
             ->addEventSubscriber(new AddCodeFormSubscriber())
+            ->add('products', ProductAutocompleteChoiceType::class, [
+                'multiple' => true,
+            ])
         ;
     }
 
