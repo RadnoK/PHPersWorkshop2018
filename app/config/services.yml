@@ -22,9 +22,15 @@ services:
 
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
-    AppBundle\Controller\:
-        resource: '../../src/AppBundle/Controller'
+    AppBundle\Controller\AddProductSetAction:
         public: true
+        arguments:
+            - "@sylius.context.cart.composite"
+            - "@app.repository.product_set"
+            - "@sylius.factory.order_item"
+            - "@sylius.order_item_quantity_modifier"
+            - "@sylius.order_processing.order_processor.composite"
+            - "@sylius.manager.order"
 
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:

@@ -76,4 +76,4 @@ app_shop_add_product_set_to_cart:
     path: '/cart/add-product-set'
     methods: ['POST']
     defaults:
-        _controller: \AppBundle\Controller\AddProductSetAction
+        _controller: 'AppBundle\Controller\AddProductSetAction:__invoke'
