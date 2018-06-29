@@ -42,6 +42,9 @@ app_admin_product_set:
         section: admin
         grid: app_admin_product_set
         except: ['show']
+        vars:
+            all:
+                header: Product sets
     type: sylius.resource
 
 app_admin_product_set_publish:
