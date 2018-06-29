@@ -8,5 +8,9 @@
                 </div>
             {% endfor %}
         </div>
+        <form action="{{ path('app_shop_add_product_set_to_cart') }}" method="post">
+                <input type="hidden" value="{{ product_set.code }}" name="productSetCode">
+                <button type="submit">{{ 'sylius.ui.add'|trans }}</button>
+        </form>
     {% endfor %}
 </div>

@@ -72,3 +72,8 @@ app_shop_partial_product_set_index:
                     - {'name': 'desc'}
                     - 2
 
+app_shop_add_product_set_to_cart:
+    path: '/cart/add-product-set'
+    methods: ['POST']
+    defaults:
+        _controller: \AppBundle\Controller\AddProductSetAction
