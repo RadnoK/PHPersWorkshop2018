@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Resource\Model\CodeAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -22,6 +24,24 @@ class ProductSet implements ResourceInterface, CodeAwareInterface
 
     /** @var string */
     private $status = self::STATE_NEW;
+
+    /** @var Collection */
+    private $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function setProducts(Collection $products): void
+    {
+        $this->products = $products;
+    }
 
     public function getStatus(): string
     {
