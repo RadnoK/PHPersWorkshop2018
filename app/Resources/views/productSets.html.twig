@@ -1,0 +1,12 @@
+<div class="ui four column stackable grid">
+    {% for product_set in product_sets %}
+        <h3>{{ product_set.name }}</h3>
+        <div class="row">
+            {% for product in product_set.products %}
+                <div class="column">
+                    {% include '@SyliusShop/Product/_box.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>

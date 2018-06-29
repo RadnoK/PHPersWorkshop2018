@@ -58,3 +58,13 @@ app_admin_product_set_publish:
                 transition: publish
             redirect: app_admin_product_set_index
 
+app_shop_partial_product_set_index:
+    path: '/partial/product-sets'
+    methods: ['GET']
+    defaults:
+        _controller: app.controller.product_set:indexAction
+        _sylius:
+            template: "@/productSets.html.twig"
+            limit: 1
+            paginate: false
+
