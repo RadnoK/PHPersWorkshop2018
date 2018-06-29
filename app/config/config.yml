@@ -11,6 +11,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: resources.yml }
+    - { resource: grid.yml }
 
 parameters:
     locale: en_US

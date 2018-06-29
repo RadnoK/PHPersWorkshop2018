@@ -22,7 +22,7 @@ class ProductSet implements ResourceInterface
         return $this->id;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -32,7 +32,7 @@ class ProductSet implements ResourceInterface
         $this->name = $name;
     }
 
-    public function getCode(): string
+    public function getCode(): ?string
     {
         return $this->code;
     }

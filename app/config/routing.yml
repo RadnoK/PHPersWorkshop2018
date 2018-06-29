@@ -31,4 +31,15 @@ app_admin_api_product_set:
     prefix: /api
     resource: |
         alias: app.product_set
+        section: api
     type: sylius.resource_api
+
+app_admin_product_set:
+    prefix: /admin
+    resource: |
+        templates: SyliusAdminBundle:Crud
+        alias: app.product_set
+        section: admin
+        grid: app_admin_product_set
+        except: ['show']
+    type: sylius.resource
