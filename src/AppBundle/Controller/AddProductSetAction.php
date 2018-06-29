@@ -7,6 +7,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\ProductSet;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sylius\Component\Core\Factory\CartItemFactoryInterface;
+use Sylius\Component\Core\Model\OrderInterface;
+use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Order\Context\CartContextInterface;
 use Sylius\Component\Order\Factory\OrderItemUnitFactoryInterface;
@@ -67,10 +69,9 @@ final class AddProductSetAction
 
         /** @var ProductInterface $product */
         foreach ($products as $product) {
-            $cartItem = $this->cartItemFactory->createForCart($cart);
-            $cartItem->setVariant($product->getVariants()->first());
+            $cartItem = $this->provideCartItem($cart, $product);
 
-            $this->itemQuantityModifier->modify($cartItem, 1);
+            $this->itemQuantityModifier->modify($cartItem, $cartItem->getQuantity() + 1);
         }
 
         $this->orderProcessor->process($cart);
@@ -79,5 +80,20 @@ final class AddProductSetAction
         $this->objectManager->flush();
 
         return new RedirectResponse($request->headers->get('referer'));
+    }
+
+    private function provideCartItem(OrderInterface $cart, ProductInterface $product): OrderItemInterface
+    {
+        /** @var OrderItemInterface $item */
+        foreach ($cart->getItems() as $item) {
+            if ($item->getProduct() === $product) {
+                return $item;
+            }
+        }
+
+        $cartItem = $this->cartItemFactory->createForCart($cart);
+        $cartItem->setVariant($product->getVariants()->first());
+
+        return $cartItem;
     }
 }
