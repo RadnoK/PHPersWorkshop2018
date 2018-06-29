@@ -4,13 +4,23 @@ declare(strict_types=1);
 
 namespace AppBundle\Entity;
 
-class ProductSet
+use Sylius\Component\Resource\Model\ResourceInterface;
+
+class ProductSet implements ResourceInterface
 {
+    /** @var int */
+    private $id;
+
     /** @var string */
     private $name;
 
     /** @var string */
     private $code;
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
     public function getName(): string
     {
