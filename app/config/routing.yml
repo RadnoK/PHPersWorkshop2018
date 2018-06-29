@@ -65,6 +65,10 @@ app_shop_partial_product_set_index:
         _controller: app.controller.product_set:indexAction
         _sylius:
             template: "@/productSets.html.twig"
-            limit: 1
-            paginate: false
+            repository:
+                method: findByStatus
+                arguments:
+                    - 'published'
+                    - {'name': 'desc'}
+                    - 2
 
