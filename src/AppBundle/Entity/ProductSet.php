@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace AppBundle\Entity;
 
+use Sylius\Component\Resource\Model\CodeAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-class ProductSet implements ResourceInterface
+class ProductSet implements ResourceInterface, CodeAwareInterface
 {
     /** @var int */
     private $id;
@@ -37,7 +38,7 @@ class ProductSet implements ResourceInterface
         return $this->code;
     }
 
-    public function setCode(string $code): void
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
