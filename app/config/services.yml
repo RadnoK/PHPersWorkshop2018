@@ -39,3 +39,10 @@ services:
         arguments:
             - "%app.model.product_set.class%"
             - []
+
+    AppBundle\Menu\AdminMenuBuilder:
+        tags:
+            -
+                name: kernel.event_listener
+                event: sylius.menu.admin.main
+                method: addProductSetsToMenu
