@@ -9,6 +9,8 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 
 class ProductSet implements ResourceInterface, CodeAwareInterface
 {
+    private const STATE_NEW = 'new';
+
     /** @var int */
     private $id;
 
@@ -17,6 +19,19 @@ class ProductSet implements ResourceInterface, CodeAwareInterface
 
     /** @var string */
     private $code;
+
+    /** @var string */
+    private $status = self::STATE_NEW;
+
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
 
     public function getId(): ?int
     {

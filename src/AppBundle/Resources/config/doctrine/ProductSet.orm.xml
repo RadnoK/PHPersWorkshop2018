@@ -6,5 +6,6 @@
         </id>
         <field name="name" column="name" type="string"/>
         <field name="code" column="code" type="string"/>
+        <field name="status" column="status" type="string"/>
     </entity>
 </doctrine-mapping>

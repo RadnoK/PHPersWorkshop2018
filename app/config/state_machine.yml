@@ -1,0 +1,13 @@
+winzou_state_machine:
+    app_product_set:
+        class: "%app.model.product_set.class%"
+        property_path: status
+        graph: app_product_set
+        state_machine_class: "%sylius.state_machine.class%"
+        states:
+            new: ~
+            published: ~
+        transitions:
+            publish:
+                from: [new]
+                to: published
