@@ -46,3 +46,13 @@ services:
                 name: kernel.event_listener
                 event: sylius.menu.admin.main
                 method: addProductSetsToMenu
+
+    app.block_bundle.inject_product_set:
+        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
+        arguments:
+            - "@@/_injectedProductSets.html.twig"
+        tags:
+            -
+                name: kernel.event_listener
+                event: sonata.block.event.sylius.shop.layout.after_content
+                method: onBlockEvent
