@@ -17,7 +17,7 @@ class ProductSet implements ResourceInterface
     /** @var string */
     private $code;
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
