@@ -43,3 +43,15 @@ app_admin_product_set:
         grid: app_admin_product_set
         except: ['show']
     type: sylius.resource
+
+app_admin_product_set_publish:
+    path: '/admin/product-sets/{id}/publish'
+    methods: ['PUT']
+    defaults:
+        _controller: app.controller.product_set:applyStateMachineTransitionAction
+        _sylius:
+            state_machine:
+                graph: app_product_set
+                transition: publish
+            referer: app_admin_product_set_index
+

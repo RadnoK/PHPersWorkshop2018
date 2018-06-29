@@ -37,3 +37,15 @@ sylius_grid:
                         type: update
                     delete:
                         type: delete
+                    publish:
+                        type: apply_transition
+                        label: app.ui.publish
+                        icon: share
+                        options:
+                            transition: publish
+                            graph: app_product_set
+                            class: yellow
+                            link:
+                                route: app_admin_product_set_publish
+                                parameters:
+                                    id: resource.id
